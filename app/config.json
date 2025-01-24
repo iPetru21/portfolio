@@ -1,11 +1,13 @@
 {
-  "name": "Hamish Williams",
-  "role": "Designer",
-  "disciplines": ["Developer", "Prototyper", "Animator", "Illustrator", "Modder"],
+  "name": "Iftodi Petru",
+  "role": "Full Stack Dev",
+  "disciplines": ["React", "GraphQL", "WordPress", "PHP", "OpenAI"],
   "url": "https://hamishw.com",
   "bluesky": "hamishw.com",
+  "instagram": "twentyelevenone",
   "figma": "@Hamish",
-  "github": "HamishMW",
-  "repo": "https://github.com/HamishMW/portfolio",
+  "github": "iPetru21",
+  "repo": "",
+  "linkedin": "iftodi-petru-008467209",
   "ascii": "__  __  __\n\u005C \u005C \u005C \u005C \u005C\u2215\n \u005C \u005C\u2215\u005C \u005C\n  \u005C\u2215  \u005C\u2215\n"
 }
