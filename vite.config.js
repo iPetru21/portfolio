@@ -18,6 +18,8 @@ export default defineConfig({
   },
   server: {
     port: 7777,
+    host: '0.0.0.0',  // Allows access from local network
+    strictPort: true,
   },
   plugins: [
     mdx({

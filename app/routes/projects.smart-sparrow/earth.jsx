@@ -208,6 +208,9 @@ export const Earth = ({
     camera.current.position.z = initCameraPosition.current.z;
     camera.current.lookAt(0, 0, 0);
 
+    // 🔹 Expose camera globally for debugging
+    window.earthCamera = camera.current;
+
     cameraXSpring.set(camera.current.position.x, false);
     cameraYSpring.set(camera.current.position.y, false);
     cameraZSpring.set(camera.current.position.z, false);
@@ -218,9 +221,13 @@ export const Earth = ({
 
     const ambientLight = new AmbientLight(0x222222, 0.05);
     const dirLight = new DirectionalLight(0xffffff, 1.5);
-    dirLight.position.set(3, 0, 1);
+    dirLight.position.set(-1, 3, 1);
     const lights = [ambientLight, dirLight];
     lights.forEach(light => scene.current.add(light));
+    
+    // 🔹 Expose lights globally for debugging in console
+    window.ambientLight = ambientLight;
+    window.dirLight = dirLight;
 
     controls.current = new OrbitControls(camera.current, canvas.current);
     controls.current.enableZoom = false;
@@ -466,7 +473,7 @@ export const Earth = ({
 
       if (intersects.length > 0) {
         const clickPosition = positionToString(intersects[0].point);
-        console.info({ clickPosition });
+        // console.info({ clickPosition });
       }
     };
 
@@ -569,6 +576,7 @@ export const Earth = ({
     };
 
     const updateLabels = index => {
+      console.log(index);
       labelElements.current.forEach(label => {
         if (label.hidden) {
           label.element.dataset.hidden = true;
@@ -717,6 +725,7 @@ export const EarthSection = memo(
       };
 
       registerSection(section);
+      console.log(labels);
 
       return () => {
         unregisterSection(section);
