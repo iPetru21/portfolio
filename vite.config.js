@@ -13,7 +13,6 @@ import rehypePrism from '@mapbox/rehype-prism';
 
 export default defineConfig({
   assetsInclude: ['**/*.glb', '**/*.hdr', '**/*.glsl'],
-  base: "portfolio",
   build: {
     assetsInlineLimit: 1024,
   },
