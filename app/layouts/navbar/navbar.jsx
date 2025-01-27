@@ -204,20 +204,40 @@ export const Navbar = () => {
   );
 };
 
-const NavbarIcons = ({ desktop }) => (
-  <div className={styles.navIcons}>
-    {socialLinks.map(({ label, url, icon }) => (
-      <a
-        key={label}
-        data-navbar-item={desktop || undefined}
-        className={styles.navIconLink}
-        aria-label={label}
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon className={styles.navIcon} icon={icon} />
-      </a>
-    ))}
-  </div>
-);
+const NavbarIcons = ({ desktop }) => {
+  const holdTimeout = useRef(null);
+
+  const handleMouseDown = (event, url) => {
+    if (url.includes("github.com")) {
+      holdTimeout.current = setTimeout(() => {
+        event.preventDefault(); // Previne navigarea doar dacă e apăsat 1s
+        alert("Rest in peace, dear Shurik. You were truly special. ❤️ 27.01.2025"); // Acțiunea ta personalizată
+      }, 1000); // 1s hold time
+    }
+  };
+
+  const handleMouseUp = () => {
+    clearTimeout(holdTimeout.current); // Anulează evenimentul dacă nu s-a ținut apăsat suficient
+  };
+
+  return (
+    <div className={styles.navIcons}>
+      {socialLinks.map(({ label, url, icon }) => (
+        <a
+          key={label}
+          data-navbar-item={desktop || undefined}
+          className={styles.navIconLink}
+          aria-label={label}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          onMouseDown={(event) => handleMouseDown(event, url)}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp} // Anulează și dacă utilizatorul mută cursorul
+        >
+          <Icon className={styles.navIcon} icon={icon} />
+        </a>
+      ))}
+    </div>
+  );
+};

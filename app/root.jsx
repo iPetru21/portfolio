@@ -22,6 +22,10 @@ import config from '~/config.json';
 import styles from './root.module.css';
 import './reset.module.css';
 import './global.module.css';
+import * as ReactGA from "react-ga4";
+
+// Replace with your GA4
+const GA_MEASUREMENT_ID = "G-TDSN21BVYQ";
 
 export const links = () => [
   {
@@ -98,6 +102,11 @@ export default function App() {
       `${config.ascii}\n`,
       `Taking a peek huh? Check out the source code: ${config.repo}\n\n`
     );
+
+    if (typeof window !== "undefined") {
+      ReactGA.default.initialize(GA_MEASUREMENT_ID);
+      ReactGA.default.send({ hitType: "pageview", page: window.location.pathname });
+    }
   }, []);
 
   return (

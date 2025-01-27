@@ -37,83 +37,111 @@ export const Uses = () => {
           title="Uses"
           description="A somewhat comprehensive list of tools, apps, hardware, and more that I use on a daily basis to design and code things. And yeah, that is a Johnny Mnemonic GIF in the background."
         />
+
         <ProjectSection padding="none" className={styles.section}>
           <ProjectSectionContent>
             <ProjectTextRow width="m">
-              <ProjectSectionHeading>Design</ProjectSectionHeading>
+              <ProjectSectionHeading>Frontend Development</ProjectSectionHeading>
               <ProjectSectionText as="div">
                 <List>
                   <ListItem>
-                    <Link href="https://www.figma.com">Figma</Link> is my primary tool for
-                    UI design these days. Made the switch from Sketch in 2020 and haven’t
-                    looked back. I’ve also created{' '}
-                    <Link href="https://www.figma.com/@hamish">a few plugins</Link> that
-                    you can install.
+                    My primary frontend framework is <Link href="https://remix.run/">Remix</Link>. 
+                    I love its focus on performance, nested routing, and server-side rendering, making it an ideal choice for modern web applications.
                   </ListItem>
                   <ListItem>
-                    Any motion graphics I create are created in Adobe After Effects. So
-                    far I haven’t found a non-Adobe product that’s as good. If anyone has
-                    suggestions please <Link href="/contact">message me</Link>.
+                    <Link href="https://react.dev/">React</Link> is the core of my development workflow. 
+                    With its component-driven architecture, it's my go-to for building scalable and interactive UIs.
                   </ListItem>
                   <ListItem>
-                    For any 3D models and video editing I use{' '}
-                    <Link href="https://www.blender.org/">Blender</Link>. Since 2.8 it’s
-                    become way simpler to use and in a lot of ways better than expensive
-                    paid tools like 3DS Max or Maya.
+                    I use <Link href="https://framer.com/motion/">Framer Motion</Link> for adding smooth animations 
+                    and enhancing the user experience in my React projects.
+                  </ListItem>
+                  <ListItem>
+                    To fetch and manage data efficiently, I use <Link href="https://graphql.org/">GraphQL</Link> 
+                    with <Link href="https://www.apollographql.com/">Apollo Client</Link>. It allows for declarative and optimized data fetching.
+                  </ListItem>
+                  <ListItem>
+                    For headless CMS and content-driven applications, I integrate <Link href="https://wordpress.org/">WordPress</Link> 
+                    as a backend and consume its data via the GraphQL API.
+                  </ListItem>
+                  <ListItem>
+                    I use <Link href="https://storybook.js.org/">Storybook</Link> to develop UI components in isolation, 
+                    ensuring design consistency across my applications.
                   </ListItem>
                 </List>
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionContent>
         </ProjectSection>
+
         <ProjectSection padding="none" className={styles.section}>
           <ProjectSectionContent>
             <ProjectTextRow width="m">
-              <ProjectSectionHeading>Development</ProjectSectionHeading>
+              <ProjectSectionHeading>Backend & API Development</ProjectSectionHeading>
               <ProjectSectionText as="div">
                 <List>
                   <ListItem>
-                    I use <Link href="https://vscodium.com/">VSCodium</Link> as my text
-                    editor, with the Tokyo Night theme and Operator Mono as my typeface of
-                    choice.
+                    My backend stack revolves around <Link href="https://nodejs.org/">Node.js</Link> and <Link href="https://expressjs.com/">Express.js</Link> 
+                    for building scalable APIs.
                   </ListItem>
                   <ListItem>
-                    Firefox is my main browser for both development and general use.
+                    I work extensively with <Link href="https://wordpress.org/">WordPress</Link> as a headless CMS, 
+                    utilizing <Link href="https://www.wpgraphql.com/">WPGraphQL</Link> to efficiently query data for frontend applications.
                   </ListItem>
                   <ListItem>
-                    <Link href="https://reactjs.org/">React</Link> is my front end
-                    Javascript library of choice. The component-centric mental model is
-                    the first thing that truly made sense to me as a designer.
+                    I leverage <Link href="https://graphql.org/">GraphQL</Link> and <Link href="https://www.apollographql.com/">Apollo Server</Link> 
+                    to create flexible, declarative APIs that fetch only the data needed.
                   </ListItem>
                   <ListItem>
-                    For 3D effects and image shaders I use{' '}
-                    <Link href="https://threejs.org/">three.js</Link>. It has a bit of a
-                    learning curve but you can do some really powerful stuff with it.
+                    I use <Link href="https://www.postgresql.org/">PostgreSQL</Link> for relational databases 
+                    and <Link href="https://www.mongodb.com/">MongoDB</Link> for NoSQL-based applications.
                   </ListItem>
                   <ListItem>
-                    For CSS I’ve used a myriad pre-processors and css-in-js solutions like
-                    styled-components, but these days I’m using vanilla CSS with{' '}
-                    <Link href="https://postcss.org/">PostCSS</Link> to get upcoming CSS
-                    features today.
+                    Authentication and security are handled with <Link href="https://next-auth.js.org/">NextAuth</Link> 
+                    or <Link href="https://auth0.com/">Auth0</Link>, ensuring secure user authentication.
                   </ListItem>
                   <ListItem>
-                    For Javascript animations I use{' '}
-                    <Link href="https://www.framer.com/motion/">Framer Motion</Link>, it’s
-                    a great way to add spring animations to React and three.js.
-                  </ListItem>
-                  <ListItem>
-                    For building and testing UI components in isolation I use{' '}
-                    <Link href="https://storybook.js.org/">Storybook</Link>. Check out the{' '}
-                    <Link href="https://storybook.hamishw.com">
-                      storybook for this website
-                    </Link>
-                    .
+                    I utilize serverless computing with <Link href="https://vercel.com/">Vercel</Link> and <Link href="https://www.netlify.com/">Netlify</Link> 
+                    to deploy high-performance, scalable web applications.
                   </ListItem>
                 </List>
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionContent>
         </ProjectSection>
+
+        <ProjectSection padding="none" className={styles.section}>
+          <ProjectSectionContent>
+            <ProjectTextRow width="m">
+              <ProjectSectionHeading>DevOps & Tooling</ProjectSectionHeading>
+              <ProjectSectionText as="div">
+                <List>
+                  <ListItem>
+                    I use <Link href="https://vscodium.com/">VSCodium</Link> as my primary code editor, 
+                    with extensions for GraphQL, Remix, and Tailwind.
+                  </ListItem>
+                  <ListItem>
+                    My version control workflow is powered by <Link href="https://git-scm.com/">Git</Link> 
+                    with repositories hosted on <Link href="https://github.com/">GitHub</Link> and <Link href="https://gitlab.com/">GitLab</Link>.
+                  </ListItem>
+                  <ListItem>
+                    I implement CI/CD pipelines with <Link href="https://github.com/features/actions">GitHub Actions</Link> 
+                    for automating deployments and testing.
+                  </ListItem>
+                  <ListItem>
+                    For server and API performance monitoring, I use <Link href="https://sentry.io/">Sentry</Link> 
+                    and <Link href="https://www.datadoghq.com/">Datadog</Link> to track and resolve issues quickly.
+                  </ListItem>
+                  <ListItem>
+                    My go-to cloud deployment platforms include <Link href="https://vercel.com/">Vercel</Link> 
+                    and <Link href="https://www.digitalocean.com/">DigitalOcean</Link>, offering seamless integration with Remix and GraphQL.
+                  </ListItem>
+                </List>
+              </ProjectSectionText>
+            </ProjectTextRow>
+          </ProjectSectionContent>
+        </ProjectSection>
+
         <ProjectSection padding="none" className={styles.section}>
           <ProjectSectionContent>
             <ProjectTextRow stretch width="m">

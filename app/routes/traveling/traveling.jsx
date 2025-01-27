@@ -2,17 +2,15 @@ import { baseMeta } from '~/utils/meta';
 import { useMemo, lazy } from "react";
 import styles from './../projects.smart-sparrow/earth.module.css';
 import {
-    ProjectBackground,
-    ProjectContainer,
-    ProjectHeader,
-    ProjectImage,
     ProjectSection,
-    ProjectSectionColumns,
     ProjectSectionContent,
     ProjectSectionHeading,
     ProjectSectionText,
     ProjectTextRow,
-  } from '~/layouts/project';
+} from '~/layouts/project';
+import { VisuallyHidden } from '~/components/visually-hidden';
+import { Link as RouterLink } from '@remix-run/react';
+import stylesLink from '~/routes/home/intro.module.css';
 
 export const meta = () => {
   return baseMeta({
@@ -38,6 +36,11 @@ export const Traveling = () => {
               position={useMemo(() => [0, 0, 0], [])}
               labels={useMemo(
                 () => [
+                  {
+                    position: [-0.37, 0.44, 0.20],
+                    text: 'Moldova',
+                    hidden: true,
+                  },
                   {
                     position: [-0.37, 0.44, 0.20],
                     text: 'Chișinău',
@@ -93,6 +96,9 @@ export const Traveling = () => {
                 animations={['0:loop']}
                 camera={[-0.82, 0.95, 0.41]}
                 meshes={['Atmosphere', 'EarthFull']}
+                labels={[
+                  'Moldova',
+                ]}
               >
                 <ProjectSection>
                   <ProjectSectionContent width="xl">
@@ -165,6 +171,33 @@ export const Traveling = () => {
                 meshes={['Atmosphere', 'EarthFull']}
               /> */}
             </Earth>
+            <RouterLink
+              to="/"
+              className={stylesLink.scrollIndicator}
+              data-status={'entered'}
+              data-hidden={false}
+              // onClick={handleScrollClick}
+            >
+              <VisuallyHidden>Scroll to details</VisuallyHidden>
+            </RouterLink>
+            <RouterLink
+              to="/"
+              className={stylesLink.mobileScrollIndicator}
+              data-status={'entered'}
+              data-hidden={false}
+              // onClick={handleScrollClick}
+            >
+              <VisuallyHidden>Scroll to details</VisuallyHidden>
+              <svg
+                aria-hidden
+                stroke="currentColor"
+                width="43"
+                height="15"
+                viewBox="0 0 43 15"
+              >
+                <path d="M1 1l20.5 12L42 1" strokeWidth="2" fill="none" />
+              </svg>
+            </RouterLink>
         </>
 
     );
