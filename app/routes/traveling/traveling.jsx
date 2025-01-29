@@ -43,7 +43,6 @@ export const Traveling = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          console.log(entry);
           if (entry.isIntersecting) {
             setScrollIndicatorHidden(false); // Ascunde indicatorul de scroll
           } else {
