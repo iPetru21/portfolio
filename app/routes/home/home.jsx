@@ -50,9 +50,6 @@ export const Home = () => {
   const [visibleSections, setVisibleSections] = useState([]);
   const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
   const intro = useRef();
-  const projectOne = useRef();
-  const projectTwo = useRef();
-  const projectThree = useRef();
   const details = useRef();
 
   useEffect(() => {

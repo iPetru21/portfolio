@@ -1,7 +1,13 @@
+import backgroundSprLarge from '~/assets/spr-background-large.jpg';
+import backgroundSprPlaceholder from '~/assets/spr-background-placeholder.jpg';
+import backgroundSpr from '~/assets/spr-background.jpg';
+
 import { baseMeta } from '~/utils/meta';
-import { useMemo, lazy } from "react";
+import { useMemo, lazy, useEffect, useState, useRef } from "react";
 import styles from './../projects.smart-sparrow/earth.module.css';
 import {
+    ProjectContainer,
+    ProjectBackground,
     ProjectSection,
     ProjectSectionContent,
     ProjectSectionHeading,
@@ -11,7 +17,7 @@ import {
 import { VisuallyHidden } from '~/components/visually-hidden';
 import { Link as RouterLink } from '@remix-run/react';
 import stylesLink from '~/routes/home/intro.module.css';
-
+import { ThemeProvider, useTheme } from '~/components/theme-provider';
 export const meta = () => {
   return baseMeta({
     title: 'Traveling',
@@ -25,8 +31,52 @@ const EarthSection = lazy(() =>
 );
 
 export const Traveling = () => {
-    return (
-        <>
+  const { theme, toggleTheme } = useTheme();
+  const isDark = theme === 'dark';
+  const themes = ['dark', 'light'];
+
+  const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(true);
+  const observerRef = useRef(null);
+
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          console.log(entry);
+          if (entry.isIntersecting) {
+            setScrollIndicatorHidden(false); // Ascunde indicatorul de scroll
+          } else {
+            setScrollIndicatorHidden(true); // Afișează indicatorul de scroll
+          }
+        });
+      },
+      {
+        threshold: 1.0, // Pragul de 1.0 înseamnă că elementul trebuie să fie complet vizibil
+      }
+    );
+
+    if (observerRef.current) {
+      observer.observe(observerRef.current);
+    }
+
+    return () => {
+      if (observerRef.current) {
+        observer.unobserve(observerRef.current);
+      }
+    };
+  }, []);
+
+  return (
+      <>
+        <ThemeProvider theme="dark" data-invert>
+          <ProjectContainer>
+            <ProjectBackground
+              opacity={isDark ? 0.5 : 0.8}
+              src={backgroundSpr}
+              srcSet={`${backgroundSpr} 1080w, ${backgroundSprLarge} 2160w`}
+              placeholder={backgroundSprPlaceholder}
+            />
             <Earth
               className={styles.earth}
               hideMeshes={useMemo(
@@ -72,7 +122,9 @@ export const Traveling = () => {
                 camera={[0, 0, 1.5]}
                 meshes={['Atmosphere', 'EarthFull']}
               >
-                <ProjectSection>
+                <ProjectSection                  
+                  ref={observerRef}
+                >
                   <ProjectSectionContent>
                     <ProjectTextRow center>
                       <ProjectSectionHeading>
@@ -175,7 +227,7 @@ export const Traveling = () => {
               to="/"
               className={stylesLink.scrollIndicator}
               data-status={'entered'}
-              data-hidden={false}
+              data-hidden={scrollIndicatorHidden}
               // onClick={handleScrollClick}
             >
               <VisuallyHidden>Scroll to details</VisuallyHidden>
@@ -184,7 +236,7 @@ export const Traveling = () => {
               to="/"
               className={stylesLink.mobileScrollIndicator}
               data-status={'entered'}
-              data-hidden={false}
+              data-hidden={scrollIndicatorHidden}
               // onClick={handleScrollClick}
             >
               <VisuallyHidden>Scroll to details</VisuallyHidden>
@@ -198,7 +250,9 @@ export const Traveling = () => {
                 <path d="M1 1l20.5 12L42 1" strokeWidth="2" fill="none" />
               </svg>
             </RouterLink>
-        </>
+          </ProjectContainer>
+        </ThemeProvider>
+      </>
 
-    );
+  );
 };

@@ -576,7 +576,6 @@ export const Earth = ({
     };
 
     const updateLabels = index => {
-      console.log(index);
       labelElements.current.forEach(label => {
         if (label.hidden) {
           label.element.dataset.hidden = true;
@@ -725,7 +724,6 @@ export const EarthSection = memo(
       };
 
       registerSection(section);
-      console.log(labels);
 
       return () => {
         unregisterSection(section);
