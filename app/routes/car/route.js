@@ -1,0 +1,1 @@
+export { Car as default, meta } from './car';
