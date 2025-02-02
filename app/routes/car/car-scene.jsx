@@ -3,7 +3,8 @@ import { Canvas } from "@react-three/fiber";
 import { GLTFLoader } from "three-stdlib";
 import { OrbitControls } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
-import carModel from "~/assets/car3.glb";
+import carModel from "~/assets/car.glb";
+import CarHud from "./car-hud";
 import * as THREE from "three";
 
 
@@ -11,23 +12,14 @@ import * as THREE from "three";
 const CarModel = () => {
     const gltf = useLoader(GLTFLoader, carModel);
 
-    // Traversează modelul pentru a schimba materialele
-    gltf.scene.traverse((child) => {
-        if (child.isMesh) {
-            child.material.color = new THREE.Color("#ffffff"); // Roșu
-            child.material.roughness = 0.5; // Rugozitate moderată
-            child.material.metalness = 0.8; // Efect metalic
-        }
-    });
-
-    return <primitive object={gltf.scene} scale={0.5} />;
+    return <primitive object={gltf.scene} scale={0.01} />;
 };
 
 // Componenta principală
 export default function CarScene() {
   return (
-    <div style={{ width: "100vw", height: "100vh", zIndex:100, position:"relative" }}>
-      <Canvas camera={{ position: [2, 2, 2], fov: 50 }}>
+    <div style={{ width: "100vw", height: "100vh", zIndex:1, position:"relative" }}>
+      <Canvas camera={{ position: [1, 1, 2], fov: 50 }}>
            {/* Iluminare ambientală (lumina globală moale) */}
            <ambientLight intensity={4} />
 
@@ -47,10 +39,11 @@ export default function CarScene() {
           {/* Încarcă modelul */}
           <CarModel/>
           {/* Controale pentru orbită (rotire, zoom, pan) */}
-          <OrbitControls />
+          <OrbitControls maxDistance={5} minDistance={2}/>
           {/* Lumini */}
         </Suspense>
       </Canvas>
+      <CarHud/>
     </div>
   );
 }
