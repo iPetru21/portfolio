@@ -1,0 +1,12 @@
+@layer components {
+    .carhud {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+    }
+
+    :root {
+        --hud-green: #01B41F;
+    }
+}

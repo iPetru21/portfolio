@@ -1,0 +1,23 @@
+@layer components {
+    .battery {
+        width: var(--battery-width);
+        height: calc(var(--battery-width) / 2);
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: inline-block;
+        position: absolute;
+
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 48%;
+            transform: translate(-50%, -50%);
+            background-color: var(--hud-green);
+            width: 65%;
+            height: 50%;
+            border-radius: calc(var(--battery-width) / 25);
+        }
+    }
+}
